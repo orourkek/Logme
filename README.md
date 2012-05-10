@@ -10,7 +10,7 @@ in their code.
 
 ### Features
 
-* **Log Handler Chain**
+##### Log Handler Chain
 
 Logme uses a variation on the Chain of Responsiblity pattern to attach
 multiple log handlers, giving the developer full control over what events
@@ -25,16 +25,16 @@ notification.
 Logme turns this kind of complex logging into a single orthogonal method
 call.
 
-* **Custom Filters**
+##### Custom Filters
 
 Handlers may also implement fully-customizable filters for fine-grained
 control over which events are actually logged.
 
-* **Log Output Formatting**
+##### Log Output Formatting
 
 Formatter objects expose a standardized interface for formatting log values.
 
-* **Extensible Built-in Handlers**
+##### Extensible Built-in Handlers
 
 Logme comes packaged with several built-in handlers for logging to files,
 database resources, web servers and the console. More importantly, Logme
