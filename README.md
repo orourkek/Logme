@@ -1,4 +1,4 @@
-### What Is it?
+### WHAT IS IT?
 
 Logme is a logging package for PHP 5.4+.
 
@@ -8,7 +8,13 @@ no regard for code testability. Logme avoids this pitfall and allows
 developers to use Dependency Injection to implement logging functionality
 in their code.
 
-### Features
+### PROJECT GOALS
+
+1. Implement a logging framework the can emit to multiple chained handlers
+2. Eschew `static` and Singleton use in favor of maximum testability
+3. Create an interface-based OO implementation for maximum customizability
+
+### FEATURES
 
 ##### Log Handler Chain
 
@@ -40,11 +46,12 @@ Logme comes packaged with several built-in handlers for logging to files,
 database resources, web servers and the console. More importantly, Logme
 makes creating your own custom handlers a triviality.
 
-### Basic Usage
+### BASIC USAGE
 
 ```php
 use Logme\Logger,
-    Logme\Handlers\ConsoleHandler;
+    Logme\Handlers\ConsoleHandler,
+    Logme\Handlers\FileHandler;
 
 // Require the Logme bootstrap file
 require '/hard/path/to/Logme.php';
