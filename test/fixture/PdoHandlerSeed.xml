@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<dataset>
+    <table name="log_table">
+        <column>level</column>
+        <column>msg</column>
+        <column>time</column>
+    </table>
+</dataset>
