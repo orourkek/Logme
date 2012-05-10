@@ -10,9 +10,10 @@ in their code.
 
 ### PROJECT GOALS
 
-1. Implement a logging framework the can emit to multiple chained handlers
-2. Eschew `static` and Singleton use in favor of maximum testability
-3. Create an interface-based OO implementation for maximum customizability
+1. Implement a 100% unit-tested logging framework capable of emitting to
+multiple chained handlers;
+2. Eschew `static` and Singleton use in favor of maximum testability;
+3. Create an interface-based OO implementation for maximum customizability.
 
 ### FEATURES
 
