@@ -6,6 +6,7 @@
  * PHP version 5.4
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 
@@ -23,12 +24,17 @@ use Logme\Handlers\HandlerInterface,
  * Logger Class
  *
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
+ * 
+ * @method int debug(string $msg, array $extra)
+ * @method int info(string $msg, array $extra)
+ * @method int warning(string $msg, array $extra)
+ * @method int error(string $msg, array $extra)
+ * @method int critical(string $msg, array $extra)
  */
-class Logger implements LoggerInterface
+class Logger extends EmitterAbstract implements LoggerInterface
 {
-    use EmitterTrait;
-    
     /**
      * Critical log event integer constant
      * @var int
@@ -194,7 +200,7 @@ class Logger implements LoggerInterface
      * 
      * @param int    $level The integer log level
      * @param string $msg   The log event message
-     * @param int    $extra Optional extra fields for logging
+     * @param array  $extra Optional key-value array of additional log fields
      * 
      * @return LogRecord Returns the LogRecord that was handled
      */

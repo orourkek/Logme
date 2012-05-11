@@ -6,6 +6,7 @@
  * PHP version 5.4
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
  
@@ -81,6 +82,7 @@ namespace Logme;
  * ```
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 class Formatter implements FormatterInterface

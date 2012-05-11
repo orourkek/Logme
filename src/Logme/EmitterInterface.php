@@ -6,6 +6,7 @@
  * PHP version 5.4
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 
@@ -16,6 +17,7 @@ use Logme\Handlers\HandlerInterface;
  * EmitterInterface
  *
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 interface EmitterInterface
@@ -23,9 +25,9 @@ interface EmitterInterface
     /**
      * Determine if the specified log record should be emitted
      * 
-     * @param LogRecord $logRecord A log record object
+     * @param LogRecordInterface $logRec A log record object
      */
-    public function canHandle(LogRecordInterface $logRecord);
+    public function canHandle(LogRecordInterface $logRec);
     
     /**
      * Mask specific log levels from being reported

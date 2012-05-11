@@ -12,6 +12,7 @@
 
 namespace Logme\Handlers;
 use Logme\Logger,
+    Logme\EmitterAbstract,
     Logme\Formatter,
     Logme\FormatterInterface,
     Logme\FilterInterface,
@@ -25,15 +26,13 @@ use Logme\Logger,
  * @package      Handlers
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
-abstract class HandlerAbstract implements HandlerInterface
+abstract class HandlerAbstract extends EmitterAbstract implements HandlerInterface
 {
-    use EmitterTrait;
-    
     /**
      * An optional message formatting object
      * @var Formatter
      */
-    protected $formatter;
+    private $formatter;
     
     /**
      * Specifies the minimum severity level and formatting settings

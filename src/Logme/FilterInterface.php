@@ -6,6 +6,7 @@
  * PHP version 5.4
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
  
@@ -15,6 +16,7 @@ namespace Logme;
  * FilterInterface
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 interface FilterInterface

@@ -6,6 +6,7 @@
  * PHP version 5.4
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 
@@ -16,6 +17,7 @@ use Logme\Handlers\HandlerInterface;
  * An interface for logger classes
  *
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 interface LoggerInterface extends EmitterInterface
@@ -40,7 +42,7 @@ interface LoggerInterface extends EmitterInterface
      * 
      * @param int    $level The integer log level
      * @param string $msg   The log event message
-     * @param int    $extra Optional additional fields for logging
+     * @param array  $extra Optional key-value array of additional log fields
      */
     public function log($level, $msg, array $extra);
     

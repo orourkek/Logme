@@ -1,11 +1,12 @@
 <?php
 
 /**
- * EmitterTrait File
+ * EmitterAbstract Class File
  * 
  * PHP version 5.4
  * 
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
 
@@ -15,9 +16,10 @@ namespace Logme;
  * Provides implementation for the EmitterInterface
  *
  * @category     Logme
+ * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
-trait EmitterTrait
+abstract class EmitterAbstract implements EmitterInterface
 {
     /**
      * An optional filtering object
