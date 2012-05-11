@@ -34,9 +34,8 @@ namespace Logme;
  * Built-in fields include:
  * 
  * * %(msg)
- * * %(msgFmt)
  * * %(time)
- * * %(timeFmt)
+ * * %(fmtTime)
  * * %(level)
  * * %(levelName)
  * * %(file)

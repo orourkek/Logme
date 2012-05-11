@@ -84,7 +84,7 @@ if (!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 50400) {
     die('Logme requires PHP 5.4 or higher' . PHP_EOL);
 }
 
-define('LOGME_SYSDIR', dirname(__DIR__));
+define('LOGME_SYSDIR', __DIR__);
 
 /*
  * --------------------------------------------------------------------

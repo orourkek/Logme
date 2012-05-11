@@ -163,7 +163,7 @@ class Logger implements LoggerInterface
      * @param string $levelName The name of the custom log reporting level
      * 
      * @return void
-     * @throws DomainException If a reserved integer log level is specified
+     * @throws DomainException If a reserved or existing log level is specified
      */
     public function addLevel($level, $levelName)
     {
@@ -174,6 +174,14 @@ class Logger implements LoggerInterface
                 .$this->builtinLevels[$level] . ') cannot be overridden'
             );
         }
+        
+        $levelName = strtolower($levelName);
+        if (array_search($levelName, $this->levels)) {
+            throw new DomainException(
+                "Invalid custom logging level: $levelName already exists"
+            );
+        }
+        
         $this->levels[$level] = $levelName;
     }
     
