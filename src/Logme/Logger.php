@@ -128,16 +128,20 @@ class Logger implements LoggerInterface
     }
     
     /**
-     * Initialize instance with optional severity level mask
+     * Instantiate logger with optional filter and exception fallback handler
      * 
-     * @param int             $mask   An instance-wide mask for all attached
-     *                                handlers
-     * @param FilterInterface $filter An optional log record emission filter
+     * @param FilterInterface  $filter   An optional logging filter
+     * @param HandlerInterface $fallback An optional fallback handler to use 
+     *                                   in the event a handler encounters an
+     *                                   exception while writing a log an event
      * 
      * @return void
      */
-    public function __construct(FilterInterface $filter = NULL)
+    public function __construct(FilterInterface $filter = NULL,
+        HandlerInterface $fallback = NULL
+    )
     {
+        $this->fallback  = $fallback;
         $this->filter    = $filter;
         $this->levels    = $this->builtinLevels;
         $this->threshold = self::DEBUG;
@@ -228,7 +232,9 @@ class Logger implements LoggerInterface
             try {
                 $emitCount += $handler->handle($logRec) ? 1 : 0;
             } catch (Exception $e) {
-                // do something
+                if ($this->fallback) {
+                    $emitCount += $this->fallback->handle($logRec) ? 1 : 0;
+                }
             }
         }
         

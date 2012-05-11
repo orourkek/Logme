@@ -29,6 +29,16 @@ class LoggerTest extends PHPUnit_Framework_TestCase
     /**
      * @depends testBeginsEmpty
      * @covers Logme\Logger::addLevel
+     * @expectedException DomainException
+     */
+    public function testAddLevelThrowsExceptionOnReservedLevelName($log)
+    {
+        $log->addLevel(42, 'debug');
+    }
+    
+    /**
+     * @depends testBeginsEmpty
+     * @covers Logme\Logger::addLevel
      */
     public function testAddLevelAssignsCustomLevel($log)
     {
@@ -81,7 +91,7 @@ class LoggerTest extends PHPUnit_Framework_TestCase
     /**
      * @covers Logme\Logger::log
      */
-    public function testLogNotifiesHandlersAndReturnsChainableInstance()
+    public function testLogNotifiesHandlers()
     {
         $handler = $this->getMock('Logme\Handlers\NullHandler', ['emit']);
         $handler->expects($this->once())
@@ -91,6 +101,25 @@ class LoggerTest extends PHPUnit_Framework_TestCase
         $logger->addHandler($handler);
         $return = $logger->log(Logger::DEBUG, 'my log message');
         $this->assertEquals(1, $return);
+    }
+    
+    /**
+     * @covers Logme\Logger::log
+     */
+    public function testLogInvokesFallbackIfHandlerThrowsException()
+    {
+        $handler = $this->getMock('Logme\Handlers\NullHandler', ['emit']);
+        $handler->expects($this->once())
+                ->method('emit')
+                ->will($this->throwException(new Exception));
+        
+        $fallback = $this->getMock('Logme\Handlers\NullHandler', ['emit']);
+        $fallback->expects($this->once())
+                 ->method('emit');
+        
+        $logger = new LoggerTestImpl(NULL, $fallback);
+        $logger->addHandler($handler);
+        $logger->log(Logger::DEBUG, 'my log message');
     }
     
     /**
