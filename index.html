@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Logme by rdlowrey</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/rdlowrey/Logme">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/rdlowrey/Logme/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/rdlowrey/Logme/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Logme</h1>
+          <p>A PHP 5.4 Logging Framework</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/rdlowrey">rdlowrey</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h2>What Is It?</h2>
+
+<p><strong>Logme</strong> is a full-featured logging framework for PHP 5.4+.</p>
+
+<p>Traditional PHP logging libraries have used <code>static</code> and/or Singleton
+implementations to shoehorn logging functionality into globals with
+no regard for code testability. <strong>Logme</strong> avoids this pitfall and allows
+developers to use Dependency Injection to implement logging functionality
+in their code.</p>
+
+<h2>Features</h2>
+
+<h3><em>Log Handler Chain</em></h3>
+
+<p><strong>Logme</strong> uses a variation on the Chain of Responsiblity pattern to attach
+multiple log handlers, giving the developer full control over what events
+are logged and to which destinations. Consider the needs of a typical web
+application:</p>
+
+<blockquote>
+<p>You wish to write low-priority notices or warnings to a simple log file
+but direct more severe log events like uncaught exceptions or critical
+system failures to a database or REST API for appropriate handling and
+notification.</p>
+</blockquote>
+
+<p><strong>Logme</strong> turns this kind of complex logging into a single orthogonal method
+call.</p>
+
+<h3><em>Custom Filters</em></h3>
+
+<p>Handlers can implement fully-customizable filters for fine-grained control
+over which events are actually logged.</p>
+
+<h3><em>Log Output Formatting</em></h3>
+
+<p>Formatter objects expose a standardized interface for formatting log values.</p>
+
+<h3><em>Extensible Built-in Handlers</em></h3>
+
+<p><strong>Logme</strong> comes packaged with several built-in handlers for logging to files,
+database resources, web servers and the console. More importantly, <strong>Logme</strong>
+makes creating your own custom handlers a triviality.</p>
+
+<h3><em>100% Unit-Tested and Fully Documented</em></h3>
+
+<p>The bullet-point pretty much sums it up.</p>
+
+<h2>Examples and Documentation</h2>
+
+<p>Checkout thorough <a href="https://github.com/rdlowrey/Logme/tree/master/examples">examples</a> on our github page or the API documentation (coming soon).</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-31625214-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
