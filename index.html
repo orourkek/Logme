@@ -31,22 +31,50 @@
 
       <section>
         <div id="title">
-          <h1>Logme</h1>
+          <h1><a href="index.html">Logme</a></h1>
           <p>A PHP 5.4 Logging Framework</p>
           <hr>
           <span class="credits left">Project maintained by <a href="https://github.com/rdlowrey">rdlowrey</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+          <span class="credits right">Hosted @ GitHub Pages (awesome)</span>
         </div>
 
         <h2>What Is It?</h2>
 
 <p><strong>Logme</strong> is a full-featured logging framework for PHP 5.4+.</p>
 
-<p>Traditional PHP logging libraries have used <code>static</code> and/or Singleton
-implementations to shoehorn logging functionality into globals with
-no regard for code testability. <strong>Logme</strong> avoids this pitfall and allows
-developers to use Dependency Injection to implement logging functionality
-in their code.</p>
+<h3>Y U NO LIKE STATIC???</h3>
+
+<p>It makes sense to have only a single logging object in your application. The
+problem with traditional logging libraries is that they usually achieve this
+state by storing the logging object in a <code>static</code> variable or wrapping it in
+an evil Singleton object. These methods are fancy ways of saying, "I'm storing"
+my logger in a <code>global</code> variable. And we all know that <strong>globals
+are evil</strong>.</p>
+
+<p>
+<strong>Logme</strong> improves on this model by expecting developers to employ 
+Dependency Injection to provision application classes for logging. The result
+is more testable, maintable code.
+</p>
+
+<hr />
+
+<h2>Installation</h2>
+
+<ol>
+    <li>Download the Logme package</li>
+    <li>Include the bootstrap file: <code>require '/hard/path/to/Logme.php';</code></li>
+</ol>
+
+
+
+<hr />
+
+<h2>Examples and Documentation</h2>
+
+<p>Checkout thorough <a href="https://github.com/rdlowrey/Logme/tree/master/examples">examples</a> on our github page or the API documentation (coming soon).</p>
+
+<hr />
 
 <h2>Features</h2>
 
@@ -84,11 +112,8 @@ makes creating your own custom handlers a triviality.</p>
 
 <h3><em>100% Unit-Tested and Fully Documented</em></h3>
 
-<p>The bullet-point pretty much sums it up.</p>
+<p>Yup, that pretty much sums it up.</p>
 
-<h2>Examples and Documentation</h2>
-
-<p>Checkout thorough <a href="https://github.com/rdlowrey/Logme/tree/master/examples">examples</a> on our github page or the API documentation (coming soon).</p>
       </section>
 
     </div>
