@@ -31,7 +31,7 @@ abstract class EmitterAbstract implements EmitterInterface
      * An array listing log event levels the logger should ignore
      * @var array
      */
-    private $masked = [];
+    private $masked = array();
     
     /**
      * The minimum severity required for log handling

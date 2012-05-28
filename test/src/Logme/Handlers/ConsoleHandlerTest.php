@@ -24,13 +24,13 @@ class ConsoleHandlerTest extends PHPUnit_Framework_TestCase
      */
     public function testEmitWritesLogEventToConsole()
     {
-        $vals = [
+        $vals = array(
             'name'      => 'handler name',
             'level'     => 1,
             'levelName' => 'critical',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         
         $logRec = new LogRecord($vals);
         

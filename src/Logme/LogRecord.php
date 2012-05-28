@@ -29,7 +29,7 @@ class LogRecord implements LogRecordInterface, JsonSerializable
      * A key-value array storing log record properties
      * @var array
      */
-    private $vals = [];
+    private $vals = array();
     
     /**
      * Initializes the value object from an associative array
@@ -124,7 +124,7 @@ class LogRecord implements LogRecordInterface, JsonSerializable
      */
     private function populateFromArr(array $vals)
     {
-        $required = ['msg', 'time', 'level', 'levelName'];
+        $required = array('msg', 'time', 'level', 'levelName');
         
         foreach ($required as $key) {
             if (!isset($vals[$key])) {

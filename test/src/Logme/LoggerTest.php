@@ -69,7 +69,7 @@ class LoggerTest extends PHPUnit_Framework_TestCase
         $handler = new FileHandler($file, 'w+', FALSE, $fmt);
         
         $log->addHandler($handler);
-        $log->debug('my log message', ['field' => 42]);
+        $log->debug('my log message', array('field' => 42));
         
         $this->assertEquals('42 - my log message' . PHP_EOL,
             file_get_contents($file)
@@ -108,12 +108,12 @@ class LoggerTest extends PHPUnit_Framework_TestCase
      */
     public function testLogInvokesFallbackIfHandlerThrowsException()
     {
-        $handler = $this->getMock('Logme\Handlers\NullHandler', ['emit']);
+        $handler = $this->getMock('Logme\Handlers\NullHandler', array('emit'));
         $handler->expects($this->once())
                 ->method('emit')
                 ->will($this->throwException(new Exception));
         
-        $fallback = $this->getMock('Logme\Handlers\NullHandler', ['emit']);
+        $fallback = $this->getMock('Logme\Handlers\NullHandler', array('emit'));
         $fallback->expects($this->once())
                  ->method('emit');
         
@@ -127,7 +127,7 @@ class LoggerTest extends PHPUnit_Framework_TestCase
      */
     public function testAddHandlerAttachesLogHandlerInstance()
     {
-        $handler = $this->getMock('Logme\Handlers\NullHandler', ['emit']);
+        $handler = $this->getMock('Logme\Handlers\NullHandler', array('emit'));
         $handler->expects($this->once())
                 ->method('emit');
         
@@ -143,13 +143,13 @@ class LoggerTest extends PHPUnit_Framework_TestCase
      */
     public function testCanHandleReturnsBooleanIfSpecifiedLevelWillBeProcessed()
     {
-        $vals = [
+        $vals = array(
             'name'      => 'handler name',
             'level'     => Logger::ERROR,
             'levelName' => 'errror',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRecError = new LogRecord($vals);
         
         $vals['level'] = Logger::DEBUG;

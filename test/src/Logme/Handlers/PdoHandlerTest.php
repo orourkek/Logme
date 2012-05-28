@@ -52,7 +52,7 @@ class PdoHandlerTest extends PHPUnit_Extensions_Database_TestCase
      */
     public function testBeginsEmpty()
     {
-        $fields = ['msg', ['fmtTime'=>'time'], 'level'];
+        $fields = array('msg', array('fmtTime'=>'time'), 'level');
         $handler = new PdoHandler(self::$pdo, 'log_table', $fields);
     }
     
@@ -61,7 +61,7 @@ class PdoHandlerTest extends PHPUnit_Extensions_Database_TestCase
      */
     public function testEmitLogsMsgToDatabaseTable()
     {
-        $fields  = ['msg', ['fmtTime'=>'time'], 'level'];
+        $fields  = array('msg', array('fmtTime'=>'time'), 'level');
         $fmt     = new Formatter(NULL, 'Y-m-d H:i:s');
         $handler = new PdoHandler(self::$pdo, 'log_table', $fields, $fmt);
         $log     = new Logger;

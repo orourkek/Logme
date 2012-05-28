@@ -15,7 +15,6 @@
  * @author     Daniel Lowrey <rdlowrey@gmail.com>
  */
 
-// define('VFS_PATH', '/hard/path/to/vfsStream.php');
 define('LOGME_SYSDIR', dirname(__DIR__));
 
 spl_autoload_register(function($cls) {
@@ -27,6 +26,7 @@ spl_autoload_register(function($cls) {
 
 
 // Require vfsStream libs
+// define('VFS_PATH', '/hard/path/to/vfsStream.php');
 $vfsPath = defined('VFS_PATH') ? VFS_PATH : 'vfsStream/vfsStream.php';
 require $vfsPath;
 

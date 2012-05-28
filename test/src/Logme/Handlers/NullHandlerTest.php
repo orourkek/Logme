@@ -13,13 +13,13 @@ class NullHandlerTest extends PHPUnit_Framework_TestCase
      */
     public function testEmitReturnsNull()
     {
-        $vals = [
+        $vals = array(
             'name'      => 'handler name',
             'level'     => 1,
             'levelName' => 'critical',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec  = new LogRecord($vals);
         $handler = new NullHandler;
         $this->assertEquals(1, $handler->handle($logRec));

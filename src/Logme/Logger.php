@@ -69,19 +69,19 @@ class Logger extends EmitterAbstract implements LoggerInterface
      * A key-value list of built-in error levels that cannot be overridden
      * @var array
      */
-    private $builtinLevels = [
+    private $builtinLevels = array(
         self::CRITICAL => 'critical',
         self::ERROR    => 'error',
         self::WARNING  => 'warning',
         self::INFO     => 'info',
         self::DEBUG    => 'debug'
-    ];
+    );
     
     /**
      * A key-value list of attached log event handlers
      * @var array
      */
-    private $handlers = [];
+    private $handlers = array();
     
     /**
      * A key-value list of supported log event levels
@@ -116,10 +116,10 @@ class Logger extends EmitterAbstract implements LoggerInterface
         if ($level = array_search($method, $this->levels)) {
             if ($args) {
                 $msg   = array_shift($args);
-                $extra = $args ? $args[0] : [];
-                $methodArgs = [$level, $msg, $extra];
+                $extra = $args ? $args[0] : array();
+                $methodArgs = array($level, $msg, $extra);
                 $this->traceFrame = 3;
-                return call_user_func_array([$this, 'log'], $methodArgs);
+                return call_user_func_array(array($this, 'log'), $methodArgs);
             } else {
                 throw new InvalidArgumentException(
                     get_class($this) . "::$method expects a log message at" .
@@ -203,8 +203,9 @@ class Logger extends EmitterAbstract implements LoggerInterface
      * @param array  $extra Optional key-value array of additional log fields
      * 
      * @return LogRecord Returns the LogRecord that was handled
+     * @todo Update 5.4 function return value dereference
      */
-    public function log($level, $msg, array $extra = [])
+    public function log($level, $msg, array $extra = array())
     {
         if (!isset($this->levels[$level])) {
             throw new RangeException(
@@ -212,7 +213,8 @@ class Logger extends EmitterAbstract implements LoggerInterface
             );
         }
         
-        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[$this->traceFrame];
+        $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS); // 5.4
+        $trace = $trace[$this->traceFrame];
         $this->traceFrame = 0;
         
         $vals = [

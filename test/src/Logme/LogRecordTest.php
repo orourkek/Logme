@@ -12,12 +12,12 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructorPopulatesProperties()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec = new LogRecord($vals);
         
         $this->assertEquals($vals['msg'], $logRec->fetch('msg'));
@@ -31,13 +31,13 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testFetchReturnsExtraArrayElementAsNeeded()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time(),
             'myField'   => 'myField val'
-        ];
+        );
         $logRec = new LogRecord($vals);
         
         $this->assertEquals($vals['myField'], $logRec->fetch('myField'));
@@ -49,12 +49,12 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testFetchThrowsExceptionOnNonexistentProperty()
     {
-         $vals = [
+         $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec = new LogRecord($vals);
         
         $test = $logRec->fetch('invalidProperty');
@@ -66,7 +66,7 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testPopulateFromArrThrowsExceptionOnInvalidArray()
     {
-        $logRec = new LogRecord([]);
+        $logRec = new LogRecord(array());
     }
     
     /**
@@ -74,13 +74,13 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testGetValsArrReturnsPropertyArray()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time(),
             'myField'   => 'my val'
-        ];
+        );
         $logRec = new LogRecord($vals);
         $arr = $logRec->getValsArr();
         
@@ -93,13 +93,13 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testJsonSerializeReturnsArrayPropertyList()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time(),
             'myField'   => 'my val'
-        ];
+        );
         $logRec = new LogRecord($vals);
         $arr = $logRec->getValsArr();
         $this->assertEquals($arr, $logRec->jsonSerialize());
@@ -110,12 +110,12 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testSerializeReturnsSerializedArray()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec = new LogRecord($vals);
         $arr = $logRec->getValsArr();
         $this->assertEquals(serialize($arr), $logRec->serialize());
@@ -126,21 +126,21 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
      */
     public function testUnserializeBuildsObjectFromSerializedString()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec = new LogRecord($vals);
         $serialized = serialize($logRec);
         
-        $vals2 = [
+        $vals2 = array(
             'level'     => Logger::ERROR,
             'levelName' => 'error',
             'msg'       => 'error message',
             'time'      => time()
-        ];
+        );
         
         $unserialized = unserialize($serialized);
         $this->assertEquals($logRec, $unserialized);

@@ -13,13 +13,13 @@ class HandlerAbstractTest extends PHPUnit_Framework_TestCase
      */
     public function testCanHandleReturnsBooleanIfSpecifiedLevelWillBeProcessed()
     {
-        $vals = [
+        $vals = array(
             'name'      => 'handler name',
             'level'     => Logger::ERROR,
             'levelName' => 'error',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec = new LogRecord($vals);
         
         $handler = new NullHandler;
@@ -67,13 +67,13 @@ class HandlerAbstractTest extends PHPUnit_Framework_TestCase
         $log = new Logger;
         $log->addHandler($handler);
         
-        $vals = [
+        $vals = array(
             'name'      => 'emitr name',
             'level'     => Logger::DEBUG,
             'levelName' => 'critical',
             'msg'       => 'my test message',
             'time'      => new DateTime
-        ];
+        );
         
         $this->assertEquals(1, $log->debug('test'));
     }

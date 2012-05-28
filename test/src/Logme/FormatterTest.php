@@ -12,12 +12,12 @@ class FormatterTest extends PHPUnit_Framework_TestCase
      */
     public function testFormatMsgReturnsExpected()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec = new LogRecord($vals);
         $fmt = new Formatter;
         $this->assertEquals($vals['msg'], $fmt->formatMsg($logRec));
@@ -29,12 +29,12 @@ class FormatterTest extends PHPUnit_Framework_TestCase
      */
     public function testFormatTimeReturnsExpected()
     {
-        $vals = [
+        $vals = array(
             'level'     => Logger::DEBUG,
             'levelName' => 'debug',
             'msg'       => 'my test message',
             'time'      => time()
-        ];
+        );
         $logRec = new LogRecord($vals);
         $fmt = new Formatter(NULL, 'Y-m-d H:i:s');
         

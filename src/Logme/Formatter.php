@@ -55,7 +55,7 @@ namespace Logme;
  * $console = ConsoleHandler(Logger::DEBUG, $fmt);
  * $log->addHandler($console);
  * 
- * $log->debug('my debug message', ['my_field' => 42]);
+ * $log->debug('my debug message', array('my_field' => 42));
  * ```
  * 
  * The above code will result in the following console output:

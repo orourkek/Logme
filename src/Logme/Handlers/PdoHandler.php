@@ -139,7 +139,7 @@ class PdoHandler extends HandlerAbstract
      */
     protected function emit(array $vals)
     {
-        $data = [];
+        $data = array();
         foreach ($this->fields as $field) {
             if (is_array($field)) {
                 reset($field);
