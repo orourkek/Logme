@@ -217,7 +217,7 @@ class Logger extends EmitterAbstract implements LoggerInterface
         $trace = $trace[$this->traceFrame];
         $this->traceFrame = 0;
         
-        $vals = [
+        $vals = array(
             'msg'       => $msg,
             'level'     => $level,
             'levelName' => $this->levels[$level],
@@ -225,7 +225,7 @@ class Logger extends EmitterAbstract implements LoggerInterface
             'line'      => isset($trace['line']) ? $trace['line'] : NULL,
             'function'  => isset($trace['function']) ? $trace['function'] : NULL,
             'class'     => isset($trace['class']) ? $trace['class'] : NULL
-        ];
+        );
         $vals['time'] = isset($vals['time']) ? $vals['time'] : time();
         $vals = array_merge($extra, $vals);
         

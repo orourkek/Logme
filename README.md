@@ -1,6 +1,6 @@
 ### WHAT IS IT?
 
-Logme is a logging package for PHP 5.4+.
+Logme is a logging package for PHP 5.3+.
 
 Traditional PHP logging libraries have used `static` and/or Singleton
 implementations to shoehorn logging functionality into globals with

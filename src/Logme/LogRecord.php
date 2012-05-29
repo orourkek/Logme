@@ -23,7 +23,7 @@ use Serializable,
  * @package      Base
  * @author       Daniel Lowrey <rdlowrey@gmail.com>
  */
-class LogRecord implements LogRecordInterface, JsonSerializable
+class LogRecord implements LogRecordInterface
 {
     /**
      * A key-value array storing log record properties
@@ -77,16 +77,6 @@ class LogRecord implements LogRecordInterface, JsonSerializable
      * @return array Returns an array of log record values
      */
     public function getValsArr()
-    {
-        return $this->vals;
-    }
-    
-    /**
-     * Allows object serialization via `json_encode`
-     * 
-     * @return array Returns an array representation of the object
-     */
-    public function jsonSerialize()
     {
         return $this->vals;
     }

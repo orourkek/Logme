@@ -89,23 +89,6 @@ class LogRecordTest extends PHPUnit_Framework_TestCase
     }
     
     /**
-     * @covers Logme\LogRecord::jsonSerialize
-     */
-    public function testJsonSerializeReturnsArrayPropertyList()
-    {
-        $vals = array(
-            'level'     => Logger::DEBUG,
-            'levelName' => 'debug',
-            'msg'       => 'my test message',
-            'time'      => time(),
-            'myField'   => 'my val'
-        );
-        $logRec = new LogRecord($vals);
-        $arr = $logRec->getValsArr();
-        $this->assertEquals($arr, $logRec->jsonSerialize());
-    }
-    
-    /**
      * @covers Logme\LogRecord::serialize
      */
     public function testSerializeReturnsSerializedArray()

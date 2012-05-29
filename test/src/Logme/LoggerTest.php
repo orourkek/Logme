@@ -93,7 +93,7 @@ class LoggerTest extends PHPUnit_Framework_TestCase
      */
     public function testLogNotifiesHandlers()
     {
-        $handler = $this->getMock('Logme\Handlers\NullHandler', ['emit']);
+        $handler = $this->getMock('Logme\Handlers\NullHandler', array('emit'));
         $handler->expects($this->once())
                 ->method('emit');
         
@@ -224,7 +224,7 @@ class LoggerTest extends PHPUnit_Framework_TestCase
      */
     public function testMagicCallInvokesLogMethodOnValidLevelName()
     {
-        $mock = $this->getMock('LoggerTestImpl', ['log']);
+        $mock = $this->getMock('LoggerTestImpl', array('log'));
         $mock->expects($this->once())
              ->method('log')
              ->with(Logger::DEBUG, 'message');
