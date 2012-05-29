@@ -3,33 +3,41 @@
 /**
  * Unit Testing Bootstrap File
  * 
- * Logme requires the vfsStream library for its unit tests. You can specify
- * the hard path to the vfsStream.php bootstrap file using the `VFS_PATH`
- * constant. If the constant is not specified the file is expected in the
- * PEAR include path. If you've installed vfsStream via PEAR you likely
- * won't need to specify the `VFS_PATH` constant.
- * 
- * vfsStream can be found at: https://github.com/mikey179/vfsStream
+ * Registers an autoloader for Logme and vfsStream classes and initializes
+ * an in-memory virtual file system.
  * 
  * @category   Logme
+ * @package    Test
  * @author     Daniel Lowrey <rdlowrey@gmail.com>
  */
 
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamWrapper;
+
 define('LOGME_SYSDIR', dirname(__DIR__));
+define('VFS_SYSDIR', LOGME_SYSDIR .'/vendor/vfsStream');
+
+/*
+ * --------------------------------------------------------------------
+ * Register Logme & vfsStream autoloader
+ * --------------------------------------------------------------------
+ */
 
 spl_autoload_register(function($cls) {
     if (0 === strpos($cls, 'Logme\\')) {
         $cls = str_replace('\\', '/', $cls);        
         require  LOGME_SYSDIR . "/src/$cls.php";
+    } elseif (0 === strpos($cls, 'org\\bovigo\\vfs\\')) {
+        $cls = str_replace('\\', '/', $cls);        
+        require VFS_SYSDIR . "/src/main/php/$cls.php";
     }
 });
 
+/*
+ * --------------------------------------------------------------------
+ * Load virtual file system (vfsStream)
+ * --------------------------------------------------------------------
+ */
 
-// Require vfsStream libs
-// define('VFS_PATH', '/hard/path/to/vfsStream.php');
-$vfsPath = defined('VFS_PATH') ? VFS_PATH : 'vfsStream/vfsStream.php';
-require $vfsPath;
-
-// Load an empty virtual file system at vfs://log/
 vfsStreamWrapper::register();
 vfsStream::setup('log');
