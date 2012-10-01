@@ -1,4 +1,4 @@
-### WHAT IS IT?
+### What Is it?
 
 Logme is a logging package for PHP 5.3+.
 
@@ -8,16 +8,9 @@ no regard for code testability. Logme avoids this pitfall and allows
 developers to use Dependency Injection to implement logging functionality
 in their code.
 
-### PROJECT GOALS
+### Features
 
-1. Implement a 100% unit-tested logging framework capable of emitting to
-multiple chained handlers;
-2. Eschew `static` and Singleton use in favor of maximum testability;
-3. Create an interface-based OO implementation for maximum customizability.
-
-### FEATURES
-
-##### Log Handler Chain
+* Event Handler Chain
 
 Logme uses a variation on the Chain of Responsiblity pattern to attach
 multiple log handlers, giving the developer full control over what events
@@ -32,25 +25,27 @@ notification.
 Logme turns this kind of complex logging into a single orthogonal method
 call.
 
-##### Custom Filters
+* Custom Filters
 
 Handlers may also implement fully-customizable filters for fine-grained
 control over which events are actually logged.
 
-##### Log Output Formatting
+* Log Output Formatting
 
 Formatter objects expose a standardized interface for formatting log values.
 
-##### Extensible Built-in Handlers
+* Extensible Built-in Handlers
 
 Logme comes packaged with several built-in handlers for logging to files,
 database resources, web servers and the console. More importantly, Logme
 makes creating your own custom handlers a triviality.
 
-### BASIC USAGE
+### Basic Usage
 
 ```php
-use Logme\Logger, Logme\Handlers\ConsoleHandler, Logme\Handlers\FileHandler;
+<?php
+use Logme\Logger,
+    Logme\Handlers\ConsoleHandler;
 
 // Require the Logme bootstrap file
 require '/hard/path/to/Logme.php';
@@ -58,7 +53,6 @@ require '/hard/path/to/Logme.php';
 $logger         = new Logger;
 $consoleHandler = new ConsoleHandler;
 $fileHandler    = new FileHandler('/path/to/my/log_file.txt');
-
 $fileHandler->setThreshold(Logger::WARNING);
 
 $logger->addHandler($consoleHandler);
