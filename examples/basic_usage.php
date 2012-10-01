@@ -26,9 +26,6 @@
  * 
  * For more complex handling using level masks and filters, see the example
  * file `masks_and_filters.php`.
- * 
- * @category   Logme
- * @author     Daniel Lowrey <rdlowrey@gmail.com>
  */
  
 use Logme\Logger,
@@ -47,14 +44,11 @@ $streamHandler  = new StreamHandler($tmpStream);
 $streamHandler->setThreshold(Logger::WARNING);
 $logger->addHandler($streamHandler);
 
-// Let us know what's happening
-echo PHP_EOL . '--- ConsoleHandler Logging Output ---' . PHP_EOL;
 
 $logger->debug('Pan-galactic Gargle Blaster!');
 $logger->warning('I wish I had my towel.');
 
 // At this point you will have seen both log events written to the console.
 // Just to demonstrate that we did, in fact, write to the stream handler:
-echo PHP_EOL . '--- StreamHandler Logging Output ---' . PHP_EOL;
 rewind($tmpStream);
 echo stream_get_contents($tmpStream) . PHP_EOL;

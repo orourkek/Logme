@@ -19,9 +19,6 @@
  * integer severity level or the name of a built-in level. Also note that
  * when you specify a custom level, the level name is converted to all
  * lowercase letters for the purpose of exposing the relevant magic method.
- * 
- * @category   Logme
- * @author     Daniel Lowrey <rdlowrey@gmail.com>
  */
  
 use Logme\Logger,

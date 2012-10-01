@@ -38,9 +38,6 @@
  * arguments as the php `date()` function specified here:
  * 
  * http://php.net/manual/en/function.date.php
- * 
- * @category   Logme
- * @author     Daniel Lowrey <rdlowrey@gmail.com>
  */
  
 use Logme\Logger,

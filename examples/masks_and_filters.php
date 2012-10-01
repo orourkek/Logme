@@ -21,9 +21,6 @@
  * value the handler (or logger) will ignore the log event. A check of any
  * injected filters is performed in addition to mask and threshold checking
  * before a log event is emitted by a handler.
- * 
- * @category   Logme
- * @author     Daniel Lowrey <rdlowrey@gmail.com>
  */
  
 use Logme\Logger,
